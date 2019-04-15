@@ -17,11 +17,11 @@ server <- function(input, output) {
     )
   })
   
-  output$predictions<-DT::renderDataTable({
-    label= as.matrix(c("Sepal.Length", "Sepal.Width", "Petal.Length","Petal.Width","Species")  )
-    newPredictout<-xgb.DMatrix(as.matrix(sapply(newPredict(),as.numeric)),label=label)
-    predict(IrisModel,newPredictout) 
-  })
+  # output$predictions<-DT::renderDataTable({
+  #   label= as.matrix(c("Sepal.Length", "Sepal.Width", "Petal.Length","Petal.Width","Species")  )
+  #   newPredictout<-xgb.DMatrix(as.matrix(sapply(newPredict(),as.numeric)),label=label)
+  #   predict(IrisModel,newPredictout) 
+  # })
   output$scatter<-renderPlot({
     plot(x=iris$Sepal.Length, y=iris$Sepal.Width, 
          xlab="Sepal Length", ylab="Sepal Width",  main="Sepal Length-Width")
