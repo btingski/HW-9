@@ -10,14 +10,14 @@ server <- function(input, output) {
       Petal.Width=input$p.width)
   })
   
-  output$predictions <- DT::renderDataTable({
-    data.frame(
+output$predictions <- DT::renderDataTable({
+       data.frame(
       iris = c("setosa", "versicolor", "virginica")
-      ,Probs = sort(predict(IrisModel, as.matrix(newPredict())),
-                    decreasing=TRUE)
+      ,Probs = predict(IrisModel, as.matrix(newPredict()))
     )
-  })
-  
+  },options = list(ordering=T))
+
+
   # output$predictions<-DT::renderDataTable({
   #   label= as.matrix(c("Sepal.Length", "Sepal.Width", "Petal.Length","Petal.Width","Species")  )
   #   newPredictout<-xgb.DMatrix(as.matrix(sapply(newPredict(),as.numeric)),label=label)
